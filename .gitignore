@@ -1,0 +1,28 @@
+# dependências
+/node_modules
+
+# build (Next.js) e exportação estática
+/.next/
+/out/
+
+# variáveis de ambiente (contém o ID real do GTM, por exemplo)
+.env
+.env*.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# sistema operacional / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# TypeScript (caso algum dia entre no projeto)
+*.tsbuildinfo
+next-env.d.ts
+
+# Vercel (se vier a hospedar por lá)
+.vercel
