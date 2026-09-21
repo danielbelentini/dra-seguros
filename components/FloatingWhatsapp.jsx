@@ -22,13 +22,13 @@ export default function FloatingWhatsapp() {
         <span className="text-[12px] text-ink/60">{floatingWhatsapp.hoverSubtitle}</span>
       </span>
 
-      <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full p-1 shadow-lg transition-transform duration-200 group-hover:scale-105">
+      <span className="flex h-[64px] w-[64px] items-center justify-center transition-transform duration-200">
         <SmartImage
           src={floatingWhatsapp.avatarSrc}
           alt="Falar com a Daniela no WhatsApp"
           width={64}
           height={64}
-          className="h-full w-full rounded-full object-cover"
+          className="h-full w-full"
         />
       </span>
     </a>

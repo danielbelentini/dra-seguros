@@ -51,9 +51,9 @@ export const navLinks = [
 // flutuante), não como mais uma rede social do footer.
 export const socialLinks = [
   // [REDES SOCIAIS — CONFIRMAR/INSERIR LINKS OFICIAIS]
-  { label: 'Instagram', href: 'https://instagram.com/', icon: 'instagram' },
-  { label: 'Facebook', href: 'https://facebook.com/', icon: 'facebook' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/', icon: 'linkedin' },
+  { label: 'Instagram', href: 'https://www.instagram.com/d.r.aseguros/', icon: 'instagram' },
+  { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100068894874511', icon: 'facebook' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/daniela-regina-de-almeida-a1b4b6431/', icon: 'linkedin' },
 ];
 
 // Propósito institucional — declaração literal da cliente (seção 5).
@@ -62,7 +62,7 @@ export const purpose =
 
 // Frase institucional — declaração da própria corretora sobre sua filosofia
 // de trabalho. Não usar como comparação ofensiva a outras corretoras.
-export const philosophyQuote = 'Algumas Corretoras "vendem" seguros, eu faço seguros.';
+export const philosophyQuote = 'Algumas Corretoras "vendem" seguros. Eu faço seguros.';
 
 // Mensagem conceitual de pós-venda (seção 20.6) — pode ser refinada na
 // redação, mas sem mudar o sentido.
@@ -211,7 +211,7 @@ export const insurersSection = {
 // um botão genérico. Enquanto o arquivo final não estiver disponível, usa
 // o placeholder "IMAGEM" no mesmo tamanho/proporção.
 export const floatingWhatsapp = {
-  avatarSrc: '/images/daniela-avatar',
+  avatarSrc: '/images/avatar-daniela-whatsapp-site',
   hoverTitle: 'Fale com a Daniela',
   hoverSubtitle: 'Tire suas dúvidas pelo WhatsApp',
 };

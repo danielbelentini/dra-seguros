@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section id="hero" className="relative isolate overflow-hidden pt-[84px]">
       <SmartImage
-        src="/images/hero-home-bg"
+        src="/images/hero/teste-fundo-hero"
         alt=""
         width={1920}
         height={1080}
@@ -20,7 +20,7 @@ export default function Hero() {
         className="absolute inset-0 -z-20 h-full w-full object-cover"
       />
       <div
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-maroon-900/94 via-maroon-900/55 to-maroon-900/10"
+        className="absolute inset-0 -z-10 bg-maroon-900/60"
         aria-hidden="true"
       />
 
