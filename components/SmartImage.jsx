@@ -16,11 +16,14 @@ export default function SmartImage({
   fallback = 'jpg',
   sizes,
 }) {
+  const validFallbacks = ['jpg', 'jpeg', 'png'];
+  const finalFallback = validFallbacks.includes(fallback) ? fallback : 'jpg';
+
   return (
     <picture>
       <source srcSet={`${src}.webp`} type="image/webp" />
       <img
-        src={`${src}.${fallback}`}
+        src={`${src}.${finalFallback}`}
         alt={alt}
         width={width}
         height={height}

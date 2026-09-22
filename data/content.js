@@ -297,13 +297,42 @@ export const postSaleBullets = [
 // grupos e nomes confirmados — sem logos recriados e sem números como
 // "trabalhamos com X seguradoras".
 export const insurerGroups = [
-  { group: 'Grupo Porto', brands: ['Porto Seguro', 'Azul', 'Itaú', 'Mitsui'] },
-  { group: 'Tokio Marine', brands: [] },
-  { group: 'Mapfre', brands: [] },
-  { group: 'Bradesco Seguros', brands: [] },
-  { group: 'Allianz', brands: [] },
-  { group: 'Suhai', brands: [] },
-  { group: 'Grupo HDI', brands: ['HDI', 'Yelum', 'Aliro'] },
+  { 
+    group: 'Grupo Porto', 
+    brands: [
+      { name: 'Porto Seguro', logo: '/images/seguradoras/logo-porto-seguro' },
+      { name: 'Azul Seguros' , logo: '/images/seguradoras/logo-azul-seguros' },
+      { name: 'Itaú', logo: '/images/seguradoras/logo-itau' },
+      { name: 'Mitsui', logo: '/images/seguradoras/logo-mitsui' }
+    ]
+  },
+  { 
+    group: 'Tokio Marine', 
+    brands: [{ name: 'Tokio Marine', logo: '/images/seguradoras/logo-tokio-marine' } ]},
+  { 
+    group: 'Mapfre', 
+    brands: [ { name: 'Mapfre', logo: '/images/seguradoras/logo-mapfre' } ] 
+  },
+  { 
+    group: 'Bradesco Seguros', 
+    brands: [ { name: 'Bradesco Seguros', logo: '/images/seguradoras/logo-bradesco-seguros' } ] 
+  },
+  { 
+    group: 'Allianz', 
+    brands: [ { name: 'Allianz', logo: '/images/seguradoras/logo-allianz' } ] 
+  },
+  { 
+    group: 'Suhai', 
+    brands: [ { name: 'Suhai', logo: '/images/seguradoras/logo-suhai' } ] 
+  },
+  { 
+    group: 'Grupo HDI', 
+    brands: [
+      { name: 'HDI', logo: '/images/seguradoras/logo-hdi' }, 
+      { name: 'Yelum', logo: '/images/seguradoras/logo-yelum' }, 
+      { name: 'Aliro', logo: '/images/seguradoras/logo-aliro' }
+    ]
+  },
 ];
 
 // Depoimentos — somente reais. Enquanto não forem fornecidos pela cliente,

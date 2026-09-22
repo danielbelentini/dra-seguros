@@ -28,13 +28,14 @@ export default function Insurers() {
           {brands.map((brand) => (
             <li key={brand} className="flex flex-col items-center gap-3 text-center">
               <SmartImage
-                src="/images/insurer-placeholder"
-                alt={`Logo ${brand}`}
+                src={brand.logo}
+                alt={`Logo ${brand.name}`}
                 width={140}
                 height={70}
-                className="h-[52px] w-auto object-contain grayscale"
+                className="h-[70px] w-auto object-contain grayscale"
+                fallback="png"
               />
-              <span className="text-[13px] text-ink/60">{brand}</span>
+              <span className="text-[13px] text-ink/60">{brand.name}</span>
             </li>
           ))}
         </ul>
