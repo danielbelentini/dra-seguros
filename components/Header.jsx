@@ -12,6 +12,13 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [visibleIds, setVisibleIds] = useState(() => new Set());
+  // "Contato" é o próprio footer, que costuma ser mais baixo que a área de
+  // ativação do IntersectionObserver (rootMargin abaixo) — perto do fim da
+  // página não sobra espaço para rolar mais e o footer nunca chega a subir
+  // até essa faixa. Por isso ele é tratado à parte: assim que o topo da
+  // última seção da página (a que vem logo antes do footer) passa da
+  // faixa do header fixo, "Contato" já é marcado como ativo.
+  const [contatoReached, setContatoReached] = useState(false);
 
   // Âncoras (ex.: "#sobre") só existem na Home. Fora da Home, o mesmo link
   // deve levar de volta para a Home e rolar até a seção.
@@ -36,8 +43,9 @@ export default function Header() {
 
   // Entre as seções visíveis, prevalece a primeira na ordem do documento.
   // Se nenhuma âncora do menu estiver visível, nenhum item fica marcado
-  // (evita ativação falsa ao passar da última seção da Home).
-  const activeId = anchorIds.find((id) => visibleIds.has(id));
+  // (evita ativação falsa ao passar da última seção da Home) — exceto
+  // quando `contatoReached` força "Contato" (ver efeito abaixo).
+  const activeId = contatoReached ? 'contato' : anchorIds.find((id) => visibleIds.has(id));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -71,10 +79,37 @@ export default function Header() {
     return () => observer.disconnect();
   }, [anchorIds, pathname]);
 
+  // Ver comentário na declaração de `contatoReached`. Em vez de depender
+  // do IntersectionObserver (que exige o footer subir bem alto na tela,
+  // algo que nem sempre é possível perto do fim da página), observa a
+  // última seção de conteúdo de cada página (o último filho de
+  // #main-content, logo antes do <Footer/> em app/layout.js) e marca
+  // "Contato" como ativo assim que o topo dela ultrapassa a faixa do
+  // header fixo (84px). Como é a última seção da página, não há nada
+  // depois para "desmarcar" o item de volta.
+  useEffect(() => {
+    const lastSection = document.getElementById('main-content')?.lastElementChild;
+    if (!lastSection) {
+      setContatoReached(false);
+      return undefined;
+    }
+
+    const onScroll = () => {
+      setContatoReached(lastSection.getBoundingClientRect().top <= 84);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [pathname]);
+
   const handleLinkClick = () => setOpen(false);
 
   const isLinkActive = (link) => {
     if (link.href.startsWith('#')) return link.href === `#${activeId}`;
+    // Links de rota (ex.: "Seguro Auto") ficam ativos pela URL atual, mas
+    // isso não pode continuar valendo quando o scroll já chegou em
+    // "Contato" — só um item do menu pode estar ativo por vez.
+    if (contatoReached) return false;
     return pathname === link.href || pathname.startsWith(`${link.href}/`);
   };
 

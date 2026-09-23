@@ -64,10 +64,6 @@ export const purpose =
 // de trabalho. Não usar como comparação ofensiva a outras corretoras.
 export const philosophyQuote = 'Algumas Corretoras "vendem" seguros. Eu faço seguros.';
 
-// Mensagem conceitual de pós-venda (seção 20.6) — pode ser refinada na
-// redação, mas sem mudar o sentido.
-export const postSaleQuote = 'Você contrata o seguro. A D.R.A. continua cuidando de você.';
-
 // Único número institucional autorizado para destaque (seção 21).
 // Não adicionar nenhuma outra estatística (clientes, satisfação, sinistros).
 export const yearsExperience = site.yearsExperience;
@@ -227,70 +223,168 @@ export const differentials = [
   'Acompanhamento no processo de renovação',
 ];
 
-// Fluxo de cotação usado na página de Seguro Auto (seção 20.3), com o
-// primeiro passo adaptado para incluir os dados do veículo.
-export const autoProcessSteps = [
-  {
-    title: 'Dados do cliente e do veículo',
-    description: 'Você informa seus dados e as características do veículo.',
-  },
-  {
-    title: 'Pesquisa em diferentes seguradoras',
-    description: 'A D.R.A. busca opções compatíveis com o seu perfil.',
-  },
-  {
-    title: 'Comparação',
-    description: 'Valores, coberturas e condições são comparados lado a lado.',
-  },
-  {
-    title: 'Apresentação das opções',
-    description: 'Você recebe as alternativas encontradas, de forma clara.',
-  },
-  {
-    title: 'Explicação',
-    description: 'Daniela explica as diferenças entre as opções apresentadas.',
-  },
-  {
-    title: 'Decisão do cliente',
-    description: 'Você escolhe qual opção deseja contratar.',
-  },
-];
+// =====================================================================
+// PÁGINA /seguro-auto — reestruturação pedida no briefing de ajustes:
+// estrutura mais enxuta e narrativa (Hero → preço não é tudo → perfil →
+// pós-venda → prova social → FAQ → CTA final), sem seção de seguradoras
+// nem "Diferenciais" genérico (já cobertos na Home). Textos vêm
+// literalmente do briefing de ajustes — não reescrever por conta própria.
+// =====================================================================
 
-// O que considerar antes de contratar (seção 20.2 e 20.4) — conteúdo
-// educativo genérico, sem citar cobertura específica de nenhuma seguradora.
-export const priceIsNotEverything = [
-  'Coberturas incluídas na apólice',
-  'Valor e condições da franquia',
-  'Proteção para terceiros',
-  'Condições gerais do contrato',
-  'Necessidades específicas de quem vai segurar o veículo',
-];
+export const autoHero = {
+  title: 'Mais do que o menor preço, a cobertura certa para o seu carro.',
+  text: 'Encontrar um seguro Auto não é só comparar valores. É entender o que você precisa proteger, avaliar as opções e escolher uma proteção que faça sentido para o seu perfil.',
+  ctaLabel: 'Fazer minha cotação pelo WhatsApp',
+};
 
-export const whatToConsider = [
-  'Proteção do próprio veículo',
-  'Responsabilidade perante terceiros',
-  'Franquia',
-  'Valores',
-  'Condições da apólice',
-  'Perfil e necessidades de quem contrata',
-];
+// Seção única que substitui as antigas "Não é só o menor preço" +
+// "O que considerar" (eram duas seções separadas e redundantes).
+export const autoPriceConsiderations = {
+  eyebrow: 'Antes de decidir',
+  title: 'Seguro Auto não é só uma questão de preço',
+  intro:
+    'Na hora de contratar um seguro, o valor é importante, mas não é a única coisa que você precisa considerar. Coberturas, franquia, assistência e as características do seu uso do veículo podem fazer diferença quando você mais precisar do seguro.',
+  points: [
+    {
+      title: 'Coberturas',
+      text: 'Entenda o que está protegido e quais situações estão incluídas na sua apólice.',
+    },
+    {
+      title: 'Franquia',
+      text: 'O valor da franquia pode fazer diferença no momento de utilizar o seguro. É importante entender como ela funciona antes de contratar.',
+    },
+    {
+      title: 'Assistências',
+      text: 'Serviços como guincho, chaveiro e assistência 24 horas podem fazer parte da proteção e variar de acordo com a opção contratada.',
+    },
+    {
+      title: 'Seu perfil de uso',
+      text: 'A forma como você utiliza o carro, onde ele circula e outras características podem influenciar as opções de seguro disponíveis.',
+    },
+    {
+      title: 'Condições do seguro',
+      text: 'Além do preço, é importante conhecer as condições, limites e regras da cobertura escolhida.',
+    },
+    {
+      title: 'A seguradora',
+      text: 'Cada seguradora possui produtos, coberturas e condições diferentes. Por isso, comparar opções pode ajudar a encontrar uma alternativa adequada ao seu perfil.',
+    },
+  ],
+  closing: 'Por isso, olhar apenas para o valor da cotação pode não contar toda a história.',
+};
 
-// Dados normalmente solicitados durante o atendimento pelo WhatsApp
-// (seções 9 e 20.5). Isto NÃO é um formulário do site — é só uma explicação
-// do que pode ser pedido durante a conversa.
-export const quoteDataFields = [
-  'Dados pessoais',
-  'CPF',
-  'CEP de pernoite do veículo',
-  'Dados do veículo',
-  'Placa ou documento do veículo',
-];
+// Substitui a antiga sequência de 6 passos ("Do seu perfil à decisão
+// final"), que repetia a seção anterior. Aqui o foco é só no ponto de
+// partida (o perfil do cliente), sem simular um fluxo de várias etapas.
+export const autoProfileApproach = {
+  eyebrow: 'Como a D.R.A. faz a cotação',
+  title: 'Cada cotação começa pelo seu perfil',
+  intro:
+    'Antes de apresentar uma opção, a D.R.A. procura entender como você utiliza o veículo, o que deseja proteger e o que é importante para você.',
+  points: [
+    {
+      title: 'Seu veículo',
+      text: 'Características e informações importantes para a cotação.',
+    },
+    {
+      title: 'Sua rotina',
+      text: 'Como você utiliza o carro no dia a dia.',
+    },
+    {
+      title: 'Suas necessidades',
+      text: 'O que você espera da proteção e quais coberturas são importantes para você.',
+    },
+  ],
+  closing:
+    'A partir dessas informações, a D.R.A. busca as opções disponíveis e apresenta as diferenças para que você possa escolher com clareza.',
+};
 
-export const postSaleBullets = [
-  'Dúvidas sobre a apólice',
-  'Questões relacionadas ao pagamento',
-  'Assistência em situações de sinistro',
-  'Renovação, com apresentação de novas opções e condições',
+// Pós-venda da página /seguro-auto — reúne também o que antes era a seção
+// separada de "sinistro" (a página não deve mais falar de cotação aqui,
+// só de pós-venda).
+export const autoPostSale = {
+  eyebrow: 'Pós-venda',
+  title: 'Seu seguro não termina na contratação.',
+  intro:
+    'Contratar o seguro é apenas o começo. Quando você precisa de ajuda depois disso, continua tendo com quem contar.',
+  items: [
+    {
+      title: 'No dia a dia',
+      text: 'Dúvidas sobre a apólice, alterações, documentos, pagamentos ou qualquer outra questão relacionada ao seu seguro.',
+    },
+    {
+      title: 'Na renovação',
+      text: 'Acompanhamento para avaliar as opções disponíveis novamente e evitar que você fique sem proteção.',
+    },
+    {
+      title: 'Quando acontece um imprevisto',
+      text: 'Orientação para entender como acionar o seguro, quais são os próximos passos e o que fazer em cada situação.',
+    },
+    {
+      title: 'No contato com a seguradora',
+      text: 'A D.R.A. ajuda no contato e acompanha a situação quando houver alguma questão que precise ser resolvida junto à seguradora.',
+    },
+  ],
+  closing: 'Você não precisa descobrir sozinho o que fazer quando precisar do seu seguro.',
+};
+
+// Prova social específica do Seguro Auto — UM depoimento real (a Home já
+// concentra a prova social institucional, ver `testimonials` abaixo).
+// Sem depoimento inventado: enquanto não for fornecido pela cliente, os
+// campos ficam como placeholder explícito.
+export const autoTestimonial = {
+  eyebrow: 'Prova social',
+  title: 'Quem já contou com a D.R.A.',
+  intro:
+    'Mais do que contratar um seguro, o importante é saber que existe alguém para orientar você quando precisar.',
+  testimonial: {
+    name: '[NOME DO CLIENTE]',
+    role: '[DEPOIMENTO REAL DE CLIENTE DE SEGURO AUTO A INSERIR]',
+    quote: '[DEPOIMENTO REAL DE CLIENTE DE SEGURO AUTO A INSERIR]',
+    avatar: 'avatar-1',
+  },
+};
+
+// FAQ específico da página /seguro-auto (6 perguntas do briefing de
+// ajustes — substitui as 8 perguntas antigas, que incluíam temas já
+// cobertos em outras seções da própria página).
+export const autoFaqs = [
+  {
+    id: 'auto-faq-1',
+    question: 'A D.R.A. faz cotação com mais de uma seguradora?',
+    answer:
+      'Sim. A D.R.A. trabalha com diferentes seguradoras e busca as opções disponíveis de acordo com o perfil do cliente e do veículo.',
+  },
+  {
+    id: 'auto-faq-2',
+    question: 'O que preciso informar para fazer uma cotação?',
+    answer:
+      'A Daniela vai solicitar algumas informações sobre você e o veículo para entender o perfil e buscar as opções adequadas. Ela orienta você durante o processo.',
+  },
+  {
+    id: 'auto-faq-3',
+    question: 'Preciso contratar o seguro depois de receber a cotação?',
+    answer:
+      'Não. A cotação serve para você conhecer as opções disponíveis e decidir com tranquilidade. A contratação só acontece se a opção fizer sentido para você.',
+  },
+  {
+    id: 'auto-faq-4',
+    question: 'Posso tirar dúvidas pelo WhatsApp antes de contratar?',
+    answer:
+      'Sim. Você pode conversar diretamente com a D.R.A. para entender as opções, esclarecer dúvidas e receber orientação antes de tomar sua decisão.',
+  },
+  {
+    id: 'auto-faq-5',
+    question: 'A D.R.A. também ajuda depois que o seguro é contratado?',
+    answer:
+      'Sim. O atendimento continua depois da contratação, inclusive em situações como dúvidas sobre a apólice, alterações, renovação e necessidade de acionar o seguro.',
+  },
+  {
+    id: 'auto-faq-6',
+    question: 'Posso fazer a cotação mesmo sem saber exatamente qual cobertura quero?',
+    answer:
+      'Sim. Você não precisa chegar sabendo qual seguro ou cobertura contratar. A conversa inicial serve justamente para entender sua necessidade e orientar você sobre as opções.',
+  },
 ];
 
 // Seguradoras/grupos com os quais a D.R.A. trabalha (seção 11). Apenas
@@ -424,12 +518,14 @@ export const ctaFinal = {
 };
 
 export const autoCtaFinal = {
-  title: 'Faça sua cotação de Seguro Auto',
-  subtitle: 'Conte o que você precisa e a D.R.A. cuida de pesquisar, comparar e explicar as opções.',
-  buttonLabel: 'Faça sua cotação pelo WhatsApp',
+  title: 'Vamos encontrar a proteção certa para o seu carro?',
+  subtitle:
+    'Conte para a D.R.A. um pouco sobre o seu carro e como você pretende utilizá-lo. A partir disso, vamos conversar sobre as opções de Seguro Auto que fazem sentido para você.',
+  buttonLabel: 'Fazer minha cotação pelo WhatsApp',
   buttonHref: getWhatsappLink(
     'Olá, Daniela! Vim pelo site da D.R.A. Seguros e gostaria de fazer uma cotação de Seguro Auto.'
   ),
+  support: ['Atendimento personalizado', 'Diferentes opções de seguro', 'Suporte durante toda a jornada'],
 };
 
 export const seo = {

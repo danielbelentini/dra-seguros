@@ -1,10 +1,21 @@
+'use client';
+
+import { useState } from 'react';
 import Container from './Container';
 import Flourish from './Flourish';
 import FaqItem from './FaqItem';
 import Button from './Button';
 import { faqs, getWhatsappLink } from '@/data/content';
 
-export default function FAQ() {
+// `items` permite reaproveitar o mesmo componente com um conjunto de
+// perguntas diferente (ex.: as 6 perguntas específicas de /seguro-auto),
+// sem duplicar o componente. Sem prop, usa o FAQ padrão da Home.
+export default function FAQ({ items = faqs }) {
+  // Estilo accordeon: só uma pergunta aberta por vez. Guarda o id da
+  // pergunta aberta (ou null) em vez de um Set — abrir uma já fecha
+  // qualquer outra automaticamente.
+  const [openId, setOpenId] = useState(null);
+
   return (
     <section id="faq" className="bg-cream-200 py-20 md:py-28">
       <Container>
@@ -31,8 +42,14 @@ export default function FAQ() {
           </div>
 
           <div className="rounded-[6px] bg-cream-100 px-6 py-2 md:px-10">
-            {faqs.map((faq) => (
-              <FaqItem key={faq.id} question={faq.question} answer={faq.answer} />
+            {items.map((faq) => (
+              <FaqItem
+                key={faq.id}
+                question={faq.question}
+                answer={faq.answer}
+                isOpen={openId === faq.id}
+                onToggle={() => setOpenId((prev) => (prev === faq.id ? null : faq.id))}
+              />
             ))}
           </div>
         </div>
