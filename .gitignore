@@ -26,3 +26,6 @@ next-env.d.ts
 
 # Vercel (se vier a hospedar por lá)
 .vercel
+
+# Arquivos zip
+*.zip
