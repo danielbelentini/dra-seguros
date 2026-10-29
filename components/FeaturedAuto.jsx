@@ -31,7 +31,8 @@ export default function FeaturedAuto() {
                   href={getWhatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  analyticsLocation="home_featured_auto"
+                  data-wa-section="seguro_auto_destaque"
+                  data-wa-button="destaque_auto_whatsapp"
                   variant="secondary"
                 >
                   Falar no WhatsApp

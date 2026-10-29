@@ -40,7 +40,8 @@ export default function QuoteViaWhatsapp() {
               )}
               target="_blank"
               rel="noopener noreferrer"
-              analyticsLocation="auto_quote_section"
+              data-wa-section="cotacao_via_whatsapp"
+              data-wa-button="cotacao_auto_whatsapp"
               variant="inverse"
             >
               Faça sua cotação pelo WhatsApp

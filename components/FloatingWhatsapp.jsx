@@ -2,7 +2,6 @@
 
 import SmartImage from './SmartImage';
 import { getWhatsappLink, floatingWhatsapp } from '@/data/content';
-import { trackWhatsappClick } from '@/lib/analytics';
 
 // Substitui o botão tradicional de WhatsApp por um avatar ilustrado da
 // Daniela (o arquivo já traz um pequeno símbolo do WhatsApp embutido) —
@@ -13,7 +12,9 @@ export default function FloatingWhatsapp() {
       href={getWhatsappLink()}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => trackWhatsappClick('floating_button')}
+      data-wa-section="botao_flutuante"
+      data-wa-button="flutuante_whatsapp"
+      data-wa-label-source="aria-label"
       aria-label={`${floatingWhatsapp.hoverTitle}, ${floatingWhatsapp.hoverSubtitle}`}
       className="group fixed bottom-5 right-5 z-40 flex items-center gap-3 md:bottom-7 md:right-7"
     >

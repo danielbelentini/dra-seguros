@@ -64,7 +64,8 @@ export default function Protection() {
               href={getWhatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
-              analyticsLocation="protecao"
+              data-wa-section="protecao"
+              data-wa-button="protecao_whatsapp"
               variant="secondary"
             >
               {protection.closingCtaLabel}

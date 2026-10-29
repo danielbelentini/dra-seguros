@@ -36,7 +36,7 @@ export default function SeguroAutoPage() {
       <CTA
         id="cta-final"
         content={autoCtaFinal}
-        analyticsLocation="auto_cta_final"
+        trackButtonName="cta_final_auto_whatsapp"
         overlay="solid"
         imagePlaceholder
         placeholderNote="Imagem conceitual de carro · mesmo tratamento visual do Hero"

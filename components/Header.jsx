@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Container from './Container';
 import { navLinks, getWhatsappLink } from '@/data/content';
-import { trackWhatsappClick } from '@/lib/analytics';
 
 export default function Header() {
   const pathname = usePathname();
@@ -163,7 +162,8 @@ export default function Header() {
           href={getWhatsappLink()}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => trackWhatsappClick('header')}
+          data-wa-section="header"
+          data-wa-button="cotacao_header_whatsapp"
           className="hidden md:inline-flex items-center rounded-[4px] bg-maroon-700 px-5 py-2.5 text-[14px] font-semibold text-cream-100 hover:bg-maroon-800 transition-colors"
         >
           Faça sua cotação
@@ -217,8 +217,9 @@ export default function Header() {
             href={getWhatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
+            data-wa-section="header"
+            data-wa-button="cotacao_menu_mobile_whatsapp"
             onClick={() => {
-              trackWhatsappClick('header_mobile');
               handleLinkClick();
             }}
             className="mt-2 inline-flex items-center justify-center rounded-[4px] bg-maroon-700 px-5 py-3 text-[14px] font-semibold text-cream-100"

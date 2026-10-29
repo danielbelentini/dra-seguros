@@ -158,18 +158,26 @@ Sem essa variável definida, o site funciona normalmente e simplesmente não
 carrega o GTM (útil para rodar localmente sem "sujar" as métricas reais).
 
 **Eventos de clique no WhatsApp**: como o WhatsApp é o único canal de
-conversão do site, todo botão/link que leva pra lá já dispara um evento
-`whatsapp_click` no `dataLayer`, com o parâmetro `click_location` indicando
-de onde veio o clique (`header`, `header_mobile`, `hero`, `faq`,
-`cta_final`, `footer`, `footer_social`). Essa lógica está centralizada em
-`lib/analytics.js` — é só criar, no GTM, uma tag de evento do GA4 que
-escuta `whatsapp_click` e mapeia `click_location` como parâmetro
-personalizado. Isso permite ver no GA4 exatamente qual seção da página gera
-mais cliques (e depois criar públicos de remarketing por seção, se quiser).
+conversão do site, todo botão/link que leva pra lá dispara um evento
+`whatsapp_click` no `dataLayer`, com estes parâmetros (além de `event`):
 
-Se preferir usar o GA4 direto (sem GTM), dá pra adaptar `lib/analytics.js`
-para chamar `window.gtag('event', 'whatsapp_click', {...})` em vez de
-`dataLayer.push`.
+| Parâmetro | Origem |
+| --- | --- |
+| `page_name` | rota atual (`home`, `seguro_auto`...), via `getPageName` em `lib/analytics.js` |
+| `section_name` | atributo `data-wa-section` do link |
+| `button_name` | atributo `data-wa-button` do link (único por elemento) |
+| `button_label` | texto visível do link no momento do clique |
+| `link_url` | `href` completo do link |
+
+Como funciona: um único listener (`components/WhatsappTracker.jsx`, montado
+no `app/layout.js`) captura cliques em `a[data-wa-section][data-wa-button]`
+e chama `trackWhatsappClick` (`lib/analytics.js`), que inicializa o
+`dataLayer` sem sobrescrever um já existente. **Para rastrear um novo botão
+de WhatsApp**, basta adicionar `data-wa-section="..."` e
+`data-wa-button="..."` (identificador único) no link ou no `<Button>`.
+
+No GTM, crie um acionador de evento personalizado `whatsapp_click` e uma tag
+de evento do GA4 que mapeie os cinco parâmetros acima.
 
 ## Deploy
 

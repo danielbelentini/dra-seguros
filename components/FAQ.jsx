@@ -33,7 +33,8 @@ export default function FAQ({ items = faqs }) {
               href={getWhatsappLink('Olá, Daniela! Tenho uma dúvida sobre seguros.')}
               target="_blank"
               rel="noopener noreferrer"
-              analyticsLocation="faq"
+              data-wa-section="faq"
+              data-wa-button="duvidas_whatsapp"
               variant="secondary"
               className="mt-6"
             >

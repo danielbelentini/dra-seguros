@@ -38,7 +38,8 @@ export default function AutoHero() {
               )}
               target="_blank"
               rel="noopener noreferrer"
-              analyticsLocation="auto_hero"
+              data-wa-section="hero"
+              data-wa-button="hero_auto_whatsapp"
               variant="inverse"
             >
               {autoHero.ctaLabel}

@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingWhatsapp from '@/components/FloatingWhatsapp';
+import WhatsappTracker from '@/components/WhatsappTracker';
 import { seo, site } from '@/data/content';
 
 const fraunces = Fraunces({
@@ -127,6 +128,7 @@ export default function RootLayout({ children }) {
         <main id="main-content">{children}</main>
         <Footer />
         <FloatingWhatsapp />
+        <WhatsappTracker />
       </body>
     </html>
   );

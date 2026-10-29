@@ -14,7 +14,7 @@ import { ctaFinal } from '@/data/content';
 export default function CTA({
   id = 'cta-final',
   content = ctaFinal,
-  analyticsLocation = 'cta_final',
+  trackButtonName = 'cta_final_whatsapp',
   overlay = 'gradient',
   imagePlaceholder = false,
   placeholderNote,
@@ -54,7 +54,8 @@ export default function CTA({
             href={content.buttonHref}
             target="_blank"
             rel="noopener noreferrer"
-            analyticsLocation={analyticsLocation}
+            data-wa-section="cta_final"
+            data-wa-button={trackButtonName}
             variant="inverse"
           >
             {content.buttonLabel}

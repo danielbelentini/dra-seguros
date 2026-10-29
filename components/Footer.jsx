@@ -5,7 +5,6 @@ import Container from './Container';
 import Flourish from './Flourish';
 import { navLinks, socialLinks, site, getWhatsappLink } from '@/data/content';
 import { socialIcons } from './icons';
-import { trackWhatsappClick } from '@/lib/analytics';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -67,7 +66,8 @@ export default function Footer() {
                   href={getWhatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackWhatsappClick('footer')}
+                  data-wa-section="footer"
+                  data-wa-button="contato_footer_whatsapp"
                   className="hover:text-cream-100 transition-colors"
                 >
                   {site.phone} (WhatsApp)
@@ -91,7 +91,6 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    onClick={s.icon === 'whatsapp' ? () => trackWhatsappClick('footer_social') : undefined}
                     className="flex h-10 w-10 items-center justify-center rounded-full border border-cream-100/25 text-cream-100/85 hover:border-cream-100/60 hover:text-cream-100 transition-colors"
                   >
                     <Icon className="h-[18px] w-[18px]" />

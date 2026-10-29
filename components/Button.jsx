@@ -1,20 +1,16 @@
 'use client';
 
-import { trackWhatsappClick } from '@/lib/analytics';
 
 /**
- * Botão reutilizável. Se `analyticsLocation` for informado, dispara um
- * evento "whatsapp_click" pro GTM/GA4 ao clicar — ver lib/analytics.js.
- * Precisa ser Client Component ('use client') por causa do onClick;
- * componentes de seção (Hero, CTA, FAQ) continuam sendo Server Components
- * normalmente, só passam uma string como prop.
+ * Botão reutilizável. Para rastrear um botão que leva ao WhatsApp, passe
+ * `data-wa-section` e `data-wa-button` (repassados ao <a> via ...rest); o
+ * clique é capturado por components/WhatsappTracker.jsx — ver lib/analytics.js.
  */
 export default function Button({
   href,
   children,
   variant = 'primary',
   className = '',
-  analyticsLocation,
   onClick,
   ...rest
 }) {
@@ -32,15 +28,10 @@ export default function Button({
       'bg-transparent text-cream-100 border border-cream-100/70 hover:bg-cream-100/10',
   };
 
-  const handleClick = (event) => {
-    if (analyticsLocation) trackWhatsappClick(analyticsLocation);
-    if (onClick) onClick(event);
-  };
-
   return (
     <a
       href={href}
-      onClick={handleClick}
+      onClick={onClick}
       className={`${base} ${variants[variant]} ${className}`}
       {...rest}
     >

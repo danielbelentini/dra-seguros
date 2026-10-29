@@ -39,7 +39,8 @@ export default function Hero() {
               href={getWhatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
-              analyticsLocation="hero"
+              data-wa-section="hero"
+              data-wa-button="hero_whatsapp"
               variant="inverse"
             >
               {homeHero.ctaLabel}
