@@ -138,7 +138,13 @@ export default function Header() {
     >
       <Container className="flex h-[84px] items-center justify-between">
         {/* Assinatura textual da marca — sem símbolo ao lado (seção 16 do briefing). */}
-        <a href="/" className="flex shrink-0 flex-col leading-none font-brand text-maroon-800">
+        <a
+          href="/"
+          data-track-event="navigation_click"
+          data-track-section="header"
+          data-track-button="header_logo"
+          className="flex shrink-0 flex-col leading-none font-brand text-maroon-800"
+        >
           <span className="text-[1.55rem] tracking-[0.02em]">D.R.A.</span>
           <span className="mt-0.5 text-[10px] font-medium tracking-[0.32em] text-maroon-500">
             SEGUROS
@@ -150,6 +156,9 @@ export default function Header() {
             <a
               key={link.href}
               href={resolveHref(link.href)}
+              data-track-event="navigation_click"
+              data-track-section="header"
+              data-track-button={`header_nav_${link.trackId}`}
               aria-current={isLinkActive(link) ? 'true' : undefined}
               className={navLinkClasses(link)}
             >
@@ -206,6 +215,9 @@ export default function Header() {
             <a
               key={link.href}
               href={resolveHref(link.href)}
+              data-track-event="navigation_click"
+              data-track-section="header"
+              data-track-button={`header_menu_mobile_${link.trackId}`}
               onClick={handleLinkClick}
               aria-current={isLinkActive(link) ? 'true' : undefined}
               className={mobileLinkClasses(link)}

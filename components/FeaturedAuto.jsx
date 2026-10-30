@@ -24,7 +24,13 @@ export default function FeaturedAuto() {
                 {autoService.summary}
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-4">
-                <Button href={autoService.href} variant="primary">
+                <Button
+                  href={autoService.href}
+                  data-track-event="navigation_click"
+                  data-track-section="seguro_auto_destaque"
+                  data-track-button="destaque_auto_ver_pagina"
+                  variant="primary"
+                >
                   {autoService.ctaLabel}
                 </Button>
                 <Button

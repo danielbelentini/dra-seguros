@@ -176,8 +176,24 @@ e chama `trackWhatsappClick` (`lib/analytics.js`), que inicializa o
 de WhatsApp**, basta adicionar `data-wa-section="..."` e
 `data-wa-button="..."` (identificador único) no link ou no `<Button>`.
 
-No GTM, crie um acionador de evento personalizado `whatsapp_click` e uma tag
-de evento do GA4 que mapeie os cinco parâmetros acima.
+**Eventos de navegação e redes sociais**: o mesmo listener e os mesmos cinco
+parâmetros valem para dois eventos adicionais:
+
+| Evento | Quando dispara |
+| --- | --- |
+| `navigation_click` | link que leva a **outra página** do site (Home ↔ `/seguro-auto`). Âncoras da mesma página não disparam: "Sobre" na Home não gera evento, mas em `/seguro-auto` (link `/#sobre`) gera. |
+| `social_click` | links de redes sociais do footer |
+
+O link recebe `data-track-event` (`navigation_click` ou `social_click`),
+`data-track-section` e `data-track-button` (identificador único). Para
+rastrear um novo link, basta adicionar esses três atributos. O destino é
+comparado com a página atual no momento do clique (`trackLinkClick` em
+`lib/analytics.js`). Itens do menu usam `trackId` em `navLinks`
+(`data/content.js`) para formar o `button_name`.
+
+No GTM, crie um acionador de evento personalizado para cada evento
+(`whatsapp_click`, `navigation_click`, `social_click`) e uma tag de evento do
+GA4 que mapeie os cinco parâmetros acima.
 
 ## Deploy
 

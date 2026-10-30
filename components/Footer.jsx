@@ -49,6 +49,9 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={resolveHref(link.href)}
+                    data-track-event="navigation_click"
+                    data-track-section="footer"
+                    data-track-button={`footer_nav_${link.trackId}`}
                     className="text-[15px] text-cream-100/70 hover:text-cream-100 transition-colors"
                   >
                     {link.label}
@@ -91,6 +94,9 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
+                    data-track-event="social_click"
+                    data-track-section="footer"
+                    data-track-button={`social_${s.icon}`}
                     className="flex h-10 w-10 items-center justify-center rounded-full border border-cream-100/25 text-cream-100/85 hover:border-cream-100/60 hover:text-cream-100 transition-colors"
                   >
                     <Icon className="h-[18px] w-[18px]" />

@@ -31,7 +31,14 @@ export default function Protection() {
               {protection.auto.text}
             </p>
           </div>
-          <Button href={protection.auto.href} variant="inverse" className="shrink-0">
+          <Button
+            href={protection.auto.href}
+            data-track-event="navigation_click"
+            data-track-section="protecao"
+            data-track-button="protecao_auto_ver_pagina"
+            variant="inverse"
+            className="shrink-0"
+          >
             {protection.auto.ctaLabel}
             <ArrowIcon className="h-4 w-4" aria-hidden="true" />
           </Button>

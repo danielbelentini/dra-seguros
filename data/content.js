@@ -42,9 +42,9 @@ export function getWhatsappLink(message) {
 // /seguro-auto (prefixando com "/"). Não existe item "Início": o logo
 // textual no header já leva para a Home (ver seção 17 do briefing).
 export const navLinks = [
-  { label: 'Seguro Auto', href: '/seguro-auto' },
-  { label: 'Sobre a D.R.A.', href: '#sobre' },
-  { label: 'Contato', href: '#contato' },
+  { label: 'Seguro Auto', href: '/seguro-auto', trackId: 'seguro_auto' },
+  { label: 'Sobre a D.R.A.', href: '#sobre', trackId: 'sobre' },
+  { label: 'Contato', href: '#contato', trackId: 'contato' },
 ];
 
 // O WhatsApp é o principal canal de conversão e é tratado à parte (botão

@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect } from 'react';
-import { trackWhatsappClick } from '@/lib/analytics';
+import { trackWhatsappClick, trackLinkClick } from '@/lib/analytics';
 
-// Único listener de cliques do site para o evento "whatsapp_click".
+// Único listener de cliques do site para os eventos "whatsapp_click",
+// "navigation_click" e "social_click".
 // Montado uma vez no layout; usa delegação de evento, então cobre qualquer
 // link marcado com data-wa-section + data-wa-button (inclusive em
 // componentes renderizados no servidor) sem listeners por botão.
@@ -14,8 +15,13 @@ export default function WhatsappTracker() {
     const handleClick = (event) => {
       const target = event.target;
       if (!(target instanceof Element)) return;
-      const link = target.closest('a[data-wa-button][data-wa-section]');
-      if (link) trackWhatsappClick(link);
+      const waLink = target.closest('a[data-wa-button][data-wa-section]');
+      if (waLink) {
+        trackWhatsappClick(waLink);
+        return;
+      }
+      const link = target.closest('a[data-track-event][data-track-section][data-track-button]');
+      if (link) trackLinkClick(link);
     };
 
     // O clique com o botão do meio (abrir em nova aba) não dispara "click",
