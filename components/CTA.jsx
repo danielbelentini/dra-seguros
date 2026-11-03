@@ -15,7 +15,7 @@ export default function CTA({
   id = 'cta-final',
   content = ctaFinal,
   trackButtonName = 'cta_final_whatsapp',
-  overlay = 'gradient',
+  imageSrc = '/images/cta/cta-bg',   // <- nova prop para permitir imagem diferente na Home e em /seguro-auto
   imagePlaceholder = false,
   placeholderNote,
 }) {
@@ -25,7 +25,7 @@ export default function CTA({
         <ImagePlaceholder note={placeholderNote} className="absolute inset-0 -z-20 h-full w-full" />
       ) : (
         <SmartImage
-          src="/images/cta-bg"
+          src={imageSrc}
           alt=""
           width={1920}
           height={1080}
@@ -33,11 +33,7 @@ export default function CTA({
         />
       )}
       <div
-        className={`absolute inset-0 -z-10 ${
-          overlay === 'solid'
-            ? 'bg-maroon-900/80'
-            : 'bg-gradient-to-b from-maroon-900/88 via-maroon-900/55 to-maroon-900/10'
-        }`}
+        className="absolute inset-0 -z-10 bg-maroon-900/55"
         aria-hidden="true"
       />
 

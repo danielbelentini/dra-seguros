@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section id="hero" className="relative isolate overflow-hidden pt-[84px]">
       <SmartImage
-        src="/images/hero/teste-fundo-hero"
+        src="/images/hero/bg-hero-home"
         alt=""
         width={1920}
         height={1080}

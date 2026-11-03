@@ -1,7 +1,7 @@
 import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Flourish from '@/components/Flourish';
-import ImagePlaceholder from '@/components/ImagePlaceholder';
+import SmartImage from '@/components/SmartImage';
 import { getWhatsappLink, autoHero } from '@/data/content';
 
 // Hero da página /seguro-auto (briefing de ajustes). A imagem final deve
@@ -14,11 +14,11 @@ import { getWhatsappLink, autoHero } from '@/data/content';
 export default function AutoHero() {
   return (
     <section id="hero" className="relative isolate overflow-hidden pt-[84px]">
-      <ImagePlaceholder
-        note="Imagem conceitual de carro · mais presente à direita, área esquerda limpa para o texto"
-        className="absolute inset-0 -z-20 h-full w-full"
+      <SmartImage src="/images/hero/bg-hero-auto" alt="" width={1920} height={1080} priority className="absolute inset-0 -z-20 h-full w-full object-cover" />
+      <div
+        className="absolute inset-0 -z-10 bg-maroon-900/80"
+        aria-hidden="true"
       />
-      <div className="absolute inset-0 -z-10 bg-maroon-900/78" aria-hidden="true" />
 
       <Container className="py-24 md:py-32">
         <div className="max-w-xl md:max-w-2xl">
