@@ -18,7 +18,7 @@ export default function About() {
             aria-hidden="true"
           />
           <SmartImage
-            src="/images/about"
+            src="/images/img-daniela-regina.jpg"
             alt="Daniela Regina de Almeida"
             width={900}
             height={1100}
