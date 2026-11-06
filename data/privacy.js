@@ -5,10 +5,12 @@
 //  fora do sitemap. Troque para `true` somente depois de:
 //   1. ativar de fato o e-mail de contato (o domínio draseguros.com.br ainda
 //      precisa estar registrado e o e-mail funcionando);
-//   2. confirmar com a Daniela os fornecedores reais (ferramentas de cotação,
-//      CRM, armazenamento etc.), o prazo de retenção e se há coleta de dados
-//      de saúde (Seguro de Vida) pelo WhatsApp — hoje o texto é propositalmente
-//      genérico nesses pontos, para não afirmar o que não foi confirmado;
+//   2. (opcional) detalhar fornecedores e prazo de retenção, hoje descritos de
+//      forma geral, de propósito, para não afirmar o que não foi confirmado.
+//      Já confirmado pela Daniela em 06/11/2026: não pede dados de saúde pelo
+//      WhatsApp (a seguradora/operadora envia o questionário ao segurado), só
+//      recebe dados de menores por intermédio dos pais, e renova apólices
+//      após informar o segurado e com o consentimento dele;
 //   3. conferir a configuração do GA4 (retenção de dados) e do hospedeiro;
 //   4. revisão jurídica do texto, de preferência.
 //  Atualize também `lastUpdated` na data da publicação.
@@ -97,8 +99,8 @@ export const privacyPolicy = {
               'Procedimentos preliminares e execução de contrato, a pedido do titular (art. 7º, V).',
             ],
             [
-              'Informações de saúde ou outros dados sensíveis, quando necessários para algum produto (por exemplo, Seguro de Vida)',
-              'Consentimento específico e destacado ou outra hipótese prevista no art. 11 da LGPD.',
+              'Contato com segurados sobre a renovação de apólices, depois de informá-los',
+              'Consentimento do segurado (art. 7º, I), que pode ser retirado a qualquer momento.',
             ],
             [
               'Cumprimento de obrigações da atividade de corretagem de seguros',
@@ -121,7 +123,15 @@ export const privacyPolicy = {
         },
         {
           type: 'p',
-          text: 'Em alguns produtos, como o Seguro de Vida, podem ser necessárias informações de saúde ou outros dados considerados sensíveis. Nesses casos, eles são solicitados apenas se forem realmente necessários e tratados nos termos da seção 3.',
+          text: 'Não solicitamos dados de saúde pelo WhatsApp. Em produtos que exigem essas informações, como seguro de vida e plano de saúde, a própria seguradora ou operadora envia o questionário diretamente ao segurado, e o tratamento desses dados segue a política de privacidade dela.',
+        },
+        {
+          type: 'p',
+          text: 'Também não atendemos nem recebemos dados de crianças e adolescentes diretamente: quando forem necessários para um seguro, eles são informados pelos pais ou responsáveis legais.',
+        },
+        {
+          type: 'p',
+          text: 'Para quem já é segurado, a D.R.A. Seguros entra em contato sobre a renovação das apólices, informando o segurado antes e contando com o consentimento dele.',
         },
         {
           type: 'p',
