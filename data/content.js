@@ -20,7 +20,7 @@ export const site = {
   cnpj: '67.749.755/0001-64',
   susepNumber: '262182489',
   susep: 'Registro SUSEP nº 262182489',
-  url: 'https://www.draseguros.com.br',
+  url: 'https://dra-seguros.vercel.app', // url: 'https://www.draseguros.com.br', só alterar quando existir endereço de produção.
 };
 
 // WhatsApp é o único canal de contato da D.R.A. Seguros.
