@@ -17,6 +17,9 @@ export default function FloatingWhatsapp() {
       data-wa-label-source="aria-label"
       aria-label={`${floatingWhatsapp.hoverTitle}, ${floatingWhatsapp.hoverSubtitle}`}
       className="group fixed bottom-5 right-5 z-40 flex items-center gap-3 md:bottom-7 md:right-7"
+      // Sobe junto com a barra de cookies, enquanto ela estiver aberta
+      // (a altura vem de components/CookieConsent.jsx).
+      style={{ transform: 'translateY(calc(var(--consent-bar-height, 0px) * -1))' }}
     >
       <span className="pointer-events-none hidden -translate-x-2 flex-col items-end rounded-[6px] bg-cream-100 px-4 py-2.5 text-right opacity-0 shadow-md transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100 md:flex">
         <span className="text-[13px] font-semibold text-maroon-800">{floatingWhatsapp.hoverTitle}</span>

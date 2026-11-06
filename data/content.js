@@ -15,8 +15,11 @@ export const site = {
   email: 'contato@draseguros.com.br',
   city: 'São Paulo, SP',
   yearsExperience: 18,
-  // Nenhum número/certificado oficial da SUSEP foi fornecido até o momento.
-  susep: '[INFORMAÇÃO/CERTIFICADO SUSEP — INSERIR DADO OFICIAL]',
+  // Razão social, CNPJ e registro SUSEP informados pela cliente (04–06/11/2026).
+  legalName: 'DANIELA REGINA DE ALMEIDA CORRETAGEM DE SEGUROS LTDA',
+  cnpj: '67.749.755/0001-64',
+  susepNumber: '262182489',
+  susep: 'Registro SUSEP nº 262182489',
   url: 'https://www.draseguros.com.br',
 };
 
@@ -55,6 +58,40 @@ export const socialLinks = [
   { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100068894874511', icon: 'facebook' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/daniela-regina-de-almeida-a1b4b6431/', icon: 'linkedin' },
 ];
+
+// Página da Política de Privacidade (texto em data/privacy.js).
+export const privacyHref = '/politica-de-privacidade';
+
+// Textos da barra de cookies e do painel de preferências
+// (components/CookieConsent.jsx). A lógica está em lib/consent.js.
+export const cookieConsent = {
+  banner: {
+    title: 'Sua privacidade é importante para nós.',
+    text: 'Usamos cookies de análise para entender como o site é utilizado, somente com a sua autorização.',
+    policyLabel: 'Política de Privacidade',
+    acceptLabel: 'Aceitar',
+    declineLabel: 'Recusar',
+  },
+  preferences: {
+    title: 'Preferências de cookies',
+    intro:
+      'Você escolhe quais cookies opcionais podem ser usados. Recusar não impede a navegação no site nem o contato pelo WhatsApp.',
+    necessary: {
+      title: 'Necessários',
+      status: 'Sempre ativos',
+      text: 'O site não usa cookies próprios para funcionar. Guardamos apenas o registro da sua escolha sobre cookies, no armazenamento local do seu navegador.',
+    },
+    analytics: {
+      title: 'Análise',
+      onLabel: 'Ativado',
+      offLabel: 'Desativado',
+      text: 'Nos ajudam a entender quais páginas são acessadas e como os botões do site são utilizados, por meio do Google Analytics (carregado pelo Google Tag Manager). Ficam desativados até você autorizar.',
+    },
+    saveLabel: 'Salvar preferências',
+    closeLabel: 'Fechar',
+    policyLabel: 'Política de Privacidade',
+  },
+};
 
 // Propósito institucional — declaração literal da cliente (seção 5).
 export const purpose =

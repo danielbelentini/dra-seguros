@@ -27,6 +27,9 @@ html {
 body {
   background-color: #F7EDE4;
   color: #2B1A1E;
+  /* Enquanto a barra de cookies está aberta, ela publica a sua altura aqui
+     (components/CookieConsent.jsx) para não cobrir o fim da página. */
+  padding-bottom: var(--consent-bar-height, 0px);
 }
 
 /* Âncoras não ficam escondidas atrás do header fixo */

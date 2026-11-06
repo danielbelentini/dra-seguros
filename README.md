@@ -39,13 +39,16 @@ estáticos funciona).
 app/
   layout.js        → estrutura raiz, fontes, metadados de SEO e JSON-LD
   page.js           → monta a página inicial com todas as seções
+  politica-de-privacidade/page.js → Política de Privacidade
   sitemap.js        → gera sitemap.xml no build
   robots.js         → gera robots.txt no build
   not-found.js       → página 404
   globals.css        → estilos globais, acessibilidade e tokens de cor
 components/
   Header.jsx          → cabeçalho fixo com transparência e menu mobile
-  Footer.jsx          → rodapé com navegação, redes sociais e logo
+  Footer.jsx          → rodapé com navegação, redes sociais, logo, Política de
+                        Privacidade e "Preferências de cookies"
+  CookieConsent.jsx   → barra de cookies e painel de preferências
   Hero.jsx            → seção inicial
   About.jsx           → seção "Sobre a profissional"
   Services.jsx        → seção de serviços (usa ServiceCard.jsx)
@@ -61,6 +64,10 @@ components/
   icons.jsx                → ícones em SVG puro (sem dependências externas)
 data/
   content.js                → todo o texto do site (fácil de editar)
+  privacy.js                 → texto da Política de Privacidade
+lib/
+  analytics.js               → eventos do dataLayer (só com consentimento)
+  consent.js                  → consentimento, Consent Mode v2 e GTM condicional
 public/images/                → imagens (placeholders inclusos)
 scripts/generate-placeholders.py → script que gerou os placeholders atuais
 ```
@@ -147,12 +154,16 @@ apagado quando as fotos reais forem inseridas.
 
 ## Google Tag Manager (GTM) e eventos de clique no WhatsApp
 
-O projeto já vem preparado para receber o GTM, sem precisar mexer em código:
+O GTM é carregado **somente depois que o visitante autoriza os cookies de
+análise** (ver a seção "Cookies, consentimento e Política de Privacidade"
+abaixo). O ID do container vem da variável `NEXT_PUBLIC_GTM_ID`:
 
-1. Copie `.env.local.example` para `.env.local`.
-2. Preencha `NEXT_PUBLIC_GTM_ID` com o ID do seu container (formato `GTM-XXXXXXX`).
-3. Rode `npm run build` normalmente — o script do GTM é injetado no `<head>`
-   (e o `<noscript>` logo no `<body>`) automaticamente.
+1. Localmente: crie `.env.local` com `NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX`.
+2. **No Netlify** (e em qualquer outra hospedagem): o `.env.local` não vai
+   para o repositório (está no `.gitignore`). Cadastre a mesma variável em
+   *Site configuration → Environment variables* **antes** do build de
+   produção; sem ela o GTM não é carregado e nada é medido.
+3. Rode `npm run build` normalmente.
 
 Sem essa variável definida, o site funciona normalmente e simplesmente não
 carrega o GTM (útil para rodar localmente sem "sujar" as métricas reais).
@@ -194,6 +205,42 @@ comparado com a página atual no momento do clique (`trackLinkClick` em
 No GTM, crie um acionador de evento personalizado para cada evento
 (`whatsapp_click`, `navigation_click`, `social_click`) e uma tag de evento do
 GA4 que mapeie os cinco parâmetros acima.
+
+**Importante:** esses três eventos só são enviados ao `dataLayer` quando o
+visitante autorizou os cookies de análise (`pushEvent` em `lib/analytics.js`).
+Isso é necessário porque o GTM, ao carregar depois do aceite, processa tudo o
+que já estiver no `dataLayer`; sem essa trava, um clique feito antes da
+autorização seria enviado ao GA4 retroativamente. O link continua funcionando
+normalmente; o clique só não é registrado.
+
+## Cookies, consentimento e Política de Privacidade
+
+- **Barra de cookies** (`components/CookieConsent.jsx`): fixa na parte de
+  baixo, não bloqueante, com "Aceitar" e "Recusar" de mesmo destaque e o link
+  da Política. O painel de preferências (Necessários sempre ativos; Análise
+  liga/desliga) abre pelo botão **"Preferências de cookies"** do rodapé.
+- **Lógica** (`lib/consent.js`): guarda a escolha no `localStorage`
+  (chave `dra_consent`: versão, data, validade e categorias). Validade de
+  6 meses (`CONSENT_VALIDITY_DAYS`). Para forçar nova pergunta a todos os
+  visitantes (por exemplo, depois de mudar a política de cookies), aumente
+  `CONSENT_VERSION`.
+- **GTM condicional**: sem autorização, o container não é carregado, nenhuma
+  requisição vai ao Google e o `dataLayer` nem é criado. Ao autorizar, o
+  Consent Mode v2 é configurado antes do GTM: `default` com tudo `denied`
+  (exceto `security_storage: granted`) e, logo em seguida, `update` com
+  `analytics_storage: granted`. Só então o script do GTM é injetado (uma
+  única vez). O `<noscript>` do GTM foi removido do layout porque carregaria
+  o container sem consentimento.
+- **Revogação**: ao desligar a análise, os cookies `_ga`, `_ga_*`, `_gid` e
+  `_gat*` são apagados e a página recarrega.
+- **Política de Privacidade**: página `/politica-de-privacidade`
+  (`app/politica-de-privacidade/page.js`), texto em `data/privacy.js`.
+  Enquanto `privacyPolicy.ready` for `false`, a página fica com `noindex` e
+  fora do sitemap. Veja no topo de `data/privacy.js` o que precisa ser
+  confirmado antes de trocar para `true`.
+- Textos da barra e do painel: `cookieConsent` em `data/content.js`.
+- Dados da empresa (razão social, CNPJ, SUSEP) estão em `site`, em
+  `data/content.js`.
 
 ## Deploy
 

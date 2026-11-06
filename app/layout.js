@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingWhatsapp from '@/components/FloatingWhatsapp';
 import WhatsappTracker from '@/components/WhatsappTracker';
+import CookieConsent from '@/components/CookieConsent';
 import { seo, site } from '@/data/content';
 
 const fraunces = Fraunces({
@@ -86,10 +87,12 @@ const jsonLd = {
   areaServed: 'BR',
 };
 
-// ID do container do Google Tag Manager (ex.: "GTM-XXXXXXX").
-// Defina em .env.local — veja o README para instruções. Sem essa variável,
-// o site funciona normalmente, só não carrega o GTM.
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+// O Google Tag Manager NÃO é mais instalado aqui. Ele só é carregado depois
+// que o visitante autoriza os cookies de análise (lib/consent.js, acionado
+// por components/CookieConsent.jsx). O ID do container continua vindo de
+// NEXT_PUBLIC_GTM_ID (.env.local localmente; variável de ambiente no Netlify).
+// Também não há mais o <noscript> do GTM: ele carregaria o container sem
+// qualquer consentimento.
 
 export default function RootLayout({ children }) {
   return (
@@ -100,30 +103,12 @@ export default function RootLayout({ children }) {
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {GTM_ID ? (
-          <script
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`,
-            }}
-          />
-        ) : null}
       </head>
       <body className="font-body antialiased">
-        {GTM_ID ? (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-              title="Google Tag Manager"
-            />
-          </noscript>
-        ) : null}
         <a href="#main-content" className="skip-link">
           Pular para o conteúdo
         </a>
+        <CookieConsent />
         <Header />
         <main id="main-content">{children}</main>
         <Footer />

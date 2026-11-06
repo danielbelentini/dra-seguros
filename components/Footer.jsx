@@ -3,7 +3,8 @@
 import { usePathname } from 'next/navigation';
 import Container from './Container';
 import Flourish from './Flourish';
-import { navLinks, socialLinks, site, getWhatsappLink } from '@/data/content';
+import { navLinks, socialLinks, site, getWhatsappLink, privacyHref } from '@/data/content';
+import { openCookiePreferences } from '@/lib/consent';
 import { socialIcons } from './icons';
 
 export default function Footer() {
@@ -107,9 +108,33 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-2 border-t border-cream-100/15 pt-6 text-[13px] text-cream-100/55">
-          <p>© {year} {site.name} · {site.ownerName}</p>
-          <p className="text-cream-100/40">{site.susep}</p>
+        <div className="mt-14 flex flex-col gap-4 border-t border-cream-100/15 pt-6 text-[13px] text-cream-100/55 md:flex-row md:items-start md:justify-between">
+          <div className="flex flex-col gap-2">
+            <p>© {year} {site.name} · {site.ownerName}</p>
+            <p className="text-cream-100/40">{site.susep}</p>
+          </div>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            <li>
+              <a
+                href={privacyHref}
+                data-track-event="navigation_click"
+                data-track-section="footer"
+                data-track-button="footer_politica_privacidade"
+                className="hover:text-cream-100 transition-colors"
+              >
+                Política de Privacidade
+              </a>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={openCookiePreferences}
+                className="hover:text-cream-100 transition-colors"
+              >
+                Preferências de cookies
+              </button>
+            </li>
+          </ul>
         </div>
       </Container>
     </footer>
