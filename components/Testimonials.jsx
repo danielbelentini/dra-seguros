@@ -66,13 +66,13 @@ export default function Testimonials() {
                 }`}
                 aria-hidden={i !== index}
               >
-                <SmartImage
+                {/* <SmartImage
                   src={`/images/${t.avatar}`}
                   alt=""
                   width={72}
                   height={72}
                   className="mx-auto h-[72px] w-[72px] rounded-full object-cover"
-                />
+                /> */}
                 <blockquote className="mt-6 font-display text-[1.3rem] leading-relaxed text-maroon-900">
                   “{t.quote}”
                 </blockquote>

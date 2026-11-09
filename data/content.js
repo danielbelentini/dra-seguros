@@ -375,9 +375,9 @@ export const autoTestimonial = {
   intro:
     'Mais do que contratar um seguro, o importante é saber que existe alguém para orientar você quando precisar.',
   testimonial: {
-    name: '[NOME DO CLIENTE]',
+    name: 'Aline Dias',
     role: '[DEPOIMENTO REAL DE CLIENTE DE SEGURO AUTO A INSERIR]',
-    quote: '[DEPOIMENTO REAL DE CLIENTE DE SEGURO AUTO A INSERIR]',
+    quote: 'A melhor corretora, sem dúvida! Sempre a postos quando preciso, com atendimento impecável, ótimos valores e coberturas que realmente fazem a diferença. Não troco por nada! O seguro do meu carro sempre foi feito com ela e, enquanto depender de mim, continuará sendo. Recomendo de olhos fechados!',
     avatar: 'avatar-1',
   },
 };
@@ -471,23 +471,23 @@ export const insurerGroups = [
 export const testimonials = [
   {
     id: 1,
-    name: '[NOME DO CLIENTE]',
-    role: '[DEPOIMENTO REAL A INSERIR]',
-    quote: '[DEPOIMENTO REAL A INSERIR]',
+    name: 'Bruna Camargo',
+    role: 'Cliente seguro auto',
+    quote: 'Sempre fui muito bem atendida pela Daniela. Mesmo sem ter passado por sinistros, sempre que precisei de suporte recebi retorno rápido, atenção e solução eficiente. É uma profissional responsável, prestativa e que demonstra verdadeiro cuidado com seus clientes. Recomendo seu trabalho com total confiança e tranquilidade.',
     avatar: 'avatar-1',
   },
   {
     id: 2,
-    name: '[NOME DO CLIENTE]',
-    role: '[DEPOIMENTO REAL A INSERIR]',
-    quote: '[DEPOIMENTO REAL A INSERIR]',
+    name: 'Priscilla e Thiago Camargo',
+    role: 'Cliente seguro auto e plano de saúde familiar',
+    quote: 'Há aproximadamente 15 anos, confiamos na D.R.A Seguros para cuidar de todos os nossos seguros e planos familiares. O atendimento próximo, transparente e sempre disponível nos dá a tranquilidade de saber que podemos contar com uma equipe comprometida em qualquer momento. Uma parceria construída com confiança, cuidado e excelência. ❤️',
     avatar: 'avatar-2',
   },
   {
     id: 3,
-    name: '[NOME DO CLIENTE]',
-    role: '[DEPOIMENTO REAL A INSERIR]',
-    quote: '[DEPOIMENTO REAL A INSERIR]',
+    name: 'Maria Penha da Silva',
+    role: 'Cliente seguro auto, residencial e equipamentos',
+    quote: 'Desde 2010, confio na Daniela para cuidar dos meus seguros com responsabilidade e segurança. Sempre atenciosa e pronta para esclarecer dúvidas, oferece um atendimento acolhedor e de confiança. Além do seguro do meu automóvel, também cuida dos seguros residencial e de equipamentos da família. Recomendo!',
     avatar: 'avatar-3',
   },
 ];

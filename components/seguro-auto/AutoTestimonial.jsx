@@ -26,18 +26,18 @@ export default function AutoTestimonial() {
         </div>
 
         <figure className="mx-auto mt-14 max-w-xl text-center">
-          <SmartImage
+          {/* <SmartImage
             src={`/images/${testimonial.avatar}`}
             alt=""
             width={72}
             height={72}
             className="mx-auto h-[72px] w-[72px] rounded-full object-cover"
-          />
+          /> */}
           <blockquote className="mt-6 font-display text-[1.3rem] leading-relaxed text-cream-100">
             &ldquo;{testimonial.quote}&rdquo;
           </blockquote>
-          <figcaption className="mt-5 text-[14.5px] text-cream-100/60">
-            <span className="font-semibold text-cream-100/85">{testimonial.name}</span> · {testimonial.role}
+          <figcaption className="mt-5 text-[14.5px] text-cream-100/60"><span className="font-semibold text-cream-100/85">{testimonial.name}</span>
+          {/* <br />{testimonial.role} */}
           </figcaption>
         </figure>
       </Container>
